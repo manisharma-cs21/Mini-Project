@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins',sans-serif;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(53, 66, 74, 0.7),rgba(53, 66, 74, 0.7)), url(45.jpg.png);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        .form-box{
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: rgba(53, 66, 74, 0.7);
+            padding: 50px 60px 70px;
+            text-align: center;
+        }
+        .form-box h1{
+            font-size: 30px;
+            margin-bottom: 60px;
+            color: #e8491d;
+            position: relative;
+        }
+        .form-box h1::after{
+            content: '';
+            width: 30px;
+            height: 4px;
+            border-radius: 3px;
+            background: #e8491d;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .input-field{
+            background: #f5f3f3;
+            margin: 15px 0;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            max-height: 65px;
+            transition: max-height 0.5s;
+            overflow: hidden;
+            
+        }
+        input{
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            padding: 18px 15px;
+        }
+        .input-field i{
+            margin-left: 15px;
+            color: #999;
+        }
+        form p{
+            text-align: left;
+            font-size: 13px;
+
+        }
+        form p a{
+            text-decoration: none;
+            color: #e8491d;
+        }
+        .btn-field{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .btn-field button{
+            flex-basis: 48%;
+            background: #e8491d;
+            color: #fff;
+            height: 40px;
+            border-radius: 20px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: background 1s;
+        }
+        .input-group{
+            height: 280px;
+        }
+        .btn-field button.disable{
+            background: #eaeaea;
+            color: #555;
+        }
+
+        /* Add this CSS to your existing styles */
+.close-btn {
+    position: absolute;
+    top: -3px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    color: red;
+    cursor: pointer;
+}
+#signupMessage {
+            color: green;
+            margin-top: 10px;
+}
+
+    </style>
+    <script src="https://kit.fontawesome.com/9448c00864.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <!-- Add this button inside the form -->
+<button type="button" id="closeBtn" class="close-btn">&times;</button>
+
+
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" placeholder="Name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="password" required>
+                    </div>
+                    <p>Forget Password<a href="#">Click here!</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="signupBtn">Sign Up</button>
+                    <button type="button" id="signinBtn" class="disable">Sign In</button>  
+
+                    <p id="signupMessage"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let signupBtn = document.getElementById("signupBtn");
+let signinBtn = document.getElementById("signinBtn");
+let nameField = document.getElementById("nameField");
+let title = document.getElementById("title");
+
+function saveToLocalStorage(data) {
+    localStorage.setItem("userData", JSON.stringify(data));
+}
+
+function getFromLocalStorage() {
+    const userData = localStorage.getItem("userData");
+    return userData ? JSON.parse(userData) : null;
+}
+
+signinBtn.onclick = function () {
+
+    const storedData = getFromLocalStorage();
+
+    if (storedData) {
+            const enteredEmail = document.querySelector("#nameField + .input-field input").value;
+            const enteredPassword = document.querySelector("#nameField + .input-field + .input-field input").value;
+
+            if (enteredEmail === storedData.email && enteredPassword === storedData.password) {
+                console.log("User data retrieved:", storedData);
+                window.location.href = "mainindex.html";
+            } else {
+                console.log("Invalid credentials. Please try again.");
+            }
+    } 
+    else {
+        console.log("No user data found. Please sign up.");
+    }
+
+    nameField.style.maxHeight = "0";
+    title.innerHTML = "Sign In";
+    signupBtn.classList.add("disable");
+    signinBtn.classList.remove("disable");
+}
+
+signupBtn.onclick = function () {
+    event.preventDefault();
+    const userData = {
+        name: document.querySelector("#nameField input").value,
+        email: document.querySelector("#nameField + .input-field input").value,
+        password: document.querySelector("#nameField + .input-field + .input-field input").value
+    };
+
+    saveToLocalStorage(userData);
+    console.log("Signed up successfully!");
+signupMessage.innerHTML = "Signed up successfully!";
+
+setTimeout(function() {
+    window.location.href = "sign.html";
+}, 2000); 
+
+
+    nameField.style.maxHeight = "60px";
+    title.innerHTML = "Sign Up";
+    signupBtn.classList.remove("disable");
+    signinBtn.classList.add("disable");
+}
+
+function closeSignupPage() {
+    window.location.href = "index.html"; // Replace with your actual home page URL
+}
+
+document.getElementById("closeBtn").onclick = closeSignupPage;
+
+
+        
+    </script>
+    <script > </script>
+</body>
+</html>
+</body>
+</html>
+   

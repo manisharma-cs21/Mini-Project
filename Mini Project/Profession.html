@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+           
+           
+        }
+
+        .container {
+          
+
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(53, 66, 74, 0.7),rgba(53, 66, 74, 0.7)), url(./img/46.jpeg);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+           
+           
+        }
+
+        
+        .form-box{
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(53, 66, 74, 0.7);
+            padding: 50px 60px 70px;
+            text-align: center;
+        }
+
+        .form-box h1 {
+
+            font-size: 30px;
+            margin-bottom: 60px;
+            color: #e8491d;
+            position: relative;
+        }
+
+        .input-field textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .btn-field {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-field button {
+            width: 48%;
+            
+            color:black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-field button:hover {
+            background: #e8491d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Share Your Journey</h1>
+            <form>
+                <div class="input-field">
+                    <textarea placeholder="Write ..." rows="5"></textarea>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="saveBtn">Share</button>
+                    <button type="button" class="disable">Back</button>  
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+     
+        document.querySelector(".btn-field button.disable").onclick = function () {
+            
+            window.location.href = "mainindex.html";
+        };
+    </script>
+</body>
+</html>

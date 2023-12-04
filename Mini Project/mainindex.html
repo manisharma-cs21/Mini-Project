@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Affordable and professional web design">
+    <meta name="keywords" content="web design, affordable web design, professional web design">
+    <meta name="author" content="Brad Traversy">
+    <title>Mini Project</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="img/favicon.png">
+    <style>
+      header #user-profile {
+        float: right;
+        margin-top: 15px;
+        position: absolute;
+    top: 10px;
+    right: 45px;
+    cursor: pointer;
+    
+      }
+
+      header #user-profile img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+      }
+      #user-profile-dropdown {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: -45px;
+      /* background-color: ; */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeInDown 0.3s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    header #user-profile a{
+        
+        font-style:normal ;
+        font-family: Arial;
+        text-transform: capitalize;
+
+    }
+    header #user-profile li{
+        padding: 6px;
+
+    }
+
+    
+        #input-section {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Experience</span> Vault</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="mainindex.html">Home</a></li>
+            
+            
+          </ul>
+        </nav>
+
+        <div id="user-profile">
+            <img src="./img/icon.jpg" alt="User Avatar" onclick="toggleDropdown()">
+            <div id="user-profile-dropdown">
+
+              <ul>
+                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+
+  
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+        </div>
+      </section>
+  
+      <section id="newsletter">
+        <div class="container">
+          <h1>Give us Suggesions</h1>
+          <form>
+            <input type="email" placeholder="Type here..." >
+            <button type="submit" class="button_1">Submit</button>
+          </form>
+        </div>
+      </section>
+  
+      <section id="boxes">
+        <div class="container">
+          <div class="box">
+            <img src="./img/1.jpg">
+            <h3>Mark Zuckerberg</h3>
+            <p>"By giving people the power to share, we're making the world more transparent."</p>
+          </div>
+          <div class="box">
+            <img src="./img/2.jpg">
+            <h3>Satya Nadella</h3>
+            <p>"Our ambitions are bold and so must be our desire to change and evolve our culture."</p>
+          </div>
+          <div class="box">
+            <img src="./img/3.jpg">
+            <h3>Elon Musk</h3>
+            <p>"You have to be pretty driven to make it happen. Otherwise you will just make yourself miserable." </p>
+          </div>
+        </div>
+      </section>
+  
+
+    <footer>
+      <p>Experience Vault, Copyright &copy; 2023</p>
+    </footer>
+    <script>
+      // document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+      //   var emailInput = document.getElementById('emailInput');
+      //   var emailError = document.getElementById('emailError');
+
+      //   if (!isValidEmail(emailInput.value)) {
+      //     emailError.style.display = 'block';
+      //     event.preventDefault(); 
+      //   } else {
+      //     emailError.style.display = 'none';
+      //   }
+      // });
+
+      function isValidEmail(email) {
+        var emailRegex = /\S+@\S+\.\S+/;
+        return emailRegex.test(email);
+      }
+
+      function toggleDropdown() {
+      var dropdown = document.getElementById('user-profile-dropdown');
+      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('#user-profile img')) {
+        var dropdown = document.getElementById('user-profile-dropdown');
+        if (dropdown.style.display === 'block') {
+          dropdown.style.display = 'none';
+        }
+      }
+    }
+    
+
+    </script>
+  </body>
+</html>

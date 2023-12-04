@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(53, 66, 74, 0.7),rgba(53, 66, 74, 0.7)), url(./img/46.jpeg);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        .form-box{
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 16%;
+            transform: translate(-50%, -50%);
+            background: rgba(53, 66, 74, 0.7);
+            padding: 50px 60px 70px;
+            text-align: center;
+        }
+        .form-box h1{
+            font-size: 30px;
+            margin-bottom: 60px;
+            color: #e8491d;
+            position: relative;
+        }
+        .form-box h1::after{
+            content: '';
+            width: 30px;
+            height: 4px;
+            border-radius: 3px;
+            background: #e8491d;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .input-field{
+            background: #eaeaea;
+            margin: 15px 0;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            max-height: 65px;
+            transition: max-height 0.5s;
+            overflow: hidden;
+        }
+        input{
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            padding: 10px 8px;
+        }
+
+        .btn-field{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            /* margin-top: 20px; */
+        }
+        .btn-field button{
+            flex-basis: 45%;
+            background: #e8491d;
+            color: #fff;
+            height: 40px;
+            border-radius: 20px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: background 0.3s; /* Add transition */
+            
+        }
+
+        .btn-field button.disable{
+            background: #eaeaea;
+            color: #555;
+        }
+        
+        .input-field input[type="file"] {
+            max-width: 100%;
+            display: none; 
+        }
+
+        .input-field label {
+            cursor: pointer;
+            background-color: #e8491d;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center; 
+        }
+
+        .input-field label:hover {
+            background-color: blue;
+        }
+
+        .input-field label::before {
+            content: "Upload Picture";
+            display: inline-block;
+        }
+
+        .input-field input[type="file"]:not(:placeholder-shown) + label::before {
+            content: "Choose Pic";
+        }
+
+        .input-field input[type="file"]::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        .input-field.hidden {
+            display: none;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/9448c00864.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Professional Life</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field" id="collegeField">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <input type="text" placeholder="College Name">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-caret-up"></i>
+                        <input type="text" placeholder="Skills">
+                </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-list-ol"></i>
+                        <input type="tel" placeholder="Current Year   Ex- 1,2,3..">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+
+                    
+
+                    <div class="input-field" id="pictureField">
+                        <i class="fa-solid fa-image"></i>
+                        <input type="file" accept="image/*" id="pictureInput" style="display: none;" class="form-control shadow-none">
+                        <label for="pictureInput"></label>
+                    </div>
+
+
+                    <div class="input-field" id="dobField">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input name="dob" type="date" placeholder="Date of Birth" required>
+                    </div>
+
+                </div>
+                <div class="btn-field">
+                    <button type="button" class="disable">Back</button> 
+                    <button type="button" id="signupBtn">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signupBtn").onclick = function () {
+          
+            alert("Form submitted successfully!");
+            window.location.href = "Profession.html";
+        };
+    
+        document.querySelector(".btn-field button.disable").onclick = function () {
+            
+            window.location.href = "mainindex.html";
+        };
+        
+    </script>
+    <script>
+        document.getElementById("signupBtn").onclick = function () {
+            // Retrieve form data
+            var collegeName = document.querySelector("#collegeField input").value;
+            var skills = document.querySelector("#collegeField input").value;
+            var currentYear = document.querySelector("#collegeField input").value;
+            var phoneNumber = document.querySelector("#collegeField input").value;
+            var dob = document.querySelector("#dobField input").value;
+
+            var pictureInput = document.getElementById("pictureInput");
+        var selectedPicture = pictureInput.files[0];
+        
+    
+            // Create an object to store form data
+            var formData = {
+                collegeName: collegeName,
+                skills: skills,
+                currentYear: currentYear,
+                phoneNumber: phoneNumber,
+                dob: dob,
+                profilePicture: URL.createObjectURL(selectedPicture) 
+            };
+    
+            // Convert the object to a JSON string and store it in localStorage
+            localStorage.setItem("formData", JSON.stringify(formData));
+            var profilePictureElement = document.getElementById("profilePicture");
+        profilePictureElement.src = formData.profilePicture;
+    
+            alert("Form submitted successfully!");
+            window.location.href = "Profession.html";
+        };
+    
+        document.querySelector(".btn-field button.disable").onclick = function () {
+            window.location.href = "mainindex.html";
+        };
+        document.getElementById("pictureInput").addEventListener("change", function () {
+        var label = document.querySelector(".input-field label");
+        label.innerHTML = "Image selected";
+        label.style.backgroundColor = "green";
+    });
+    </script>
+    
+</body>
+</html>

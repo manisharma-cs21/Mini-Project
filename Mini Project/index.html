@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Affordable and professional web design">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Brad Traversy">
+    <title>Mini Project</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="img/favicon.png">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Experience</span> Vault</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="index.html">Home</a></li>
+            <li><a href="Sign.html">Sign in / Sign up</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>Storing life lessons and skills</h1>
+        <p>A online platform where a person have freedom to share about their professional life </p>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <h1>Subscribe To Our Newsletter</h1>
+        <form>
+          <input type="email" placeholder="Enter Email..." required>
+          <button type="submit" class="button_1">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <div class="container">
+        <div class="box">
+          <img src="./img/1.jpg">
+          <h3>Mark Zuckerberg</h3>
+          <p>"By giving people the power to share, we're making the world more transparent."</p>
+        </div>
+        <div class="box">
+          <img src="./img/2.jpg">
+          <h3>Satya Nadella</h3>
+          <p>"Our ambitions are bold and so must be our desire to change and evolve our culture."</p>
+        </div>
+        <div class="box">
+          <img src="./img/3.jpg">
+          <h3>Elon Musk</h3>
+          <p>"You have to be pretty driven to make it happen. Otherwise you will just make yourself miserable." </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Experience Vault, Copyright &copy; 2023</p>
+    </footer>
+    <script url >
+      document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve the stored email from local storage and populate the input field
+        var storedEmail = localStorage.getItem('storedEmail');
+        if (storedEmail) {
+          document.getElementById('emailInput').value = storedEmail;
+        }
+    
+        // Add event listener to the newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+          var emailInput = document.getElementById('emailInput');
+          var emailError = document.getElementById('emailError');
+    
+          // Validate email format
+          if (!isValidEmail(emailInput.value)) {
+            emailError.style.display = 'block';
+            event.preventDefault(); 
+          } else {
+            emailError.style.display = 'none';
+    
+            // Save the email to local storage
+            localStorage.setItem('storedEmail', emailInput.value);
+          }
+        });
+    
+        // Function to validate email format
+        function isValidEmail(email) {
+          var emailRegex = /\S+@\S+\.\S+/;
+          return emailRegex.test(email);
+        }
+      });
+    </script>
+
+    
+  </body>
+</html>
